@@ -5,6 +5,8 @@ import com.example.Project.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PaymentService {
 
@@ -18,5 +20,9 @@ public class PaymentService {
 
     public Payment getPaymentDetails(Long id) {
         return paymentRepository.findById(id).orElse(null);
+    }
+
+    public List<Payment> getPaymentsByStatus(String status) {
+        return paymentRepository.findByStatus(status);
     }
 }

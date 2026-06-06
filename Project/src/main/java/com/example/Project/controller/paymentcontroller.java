@@ -5,6 +5,8 @@ import com.example.Project.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/api/payments")
 public class paymentcontroller {
@@ -20,5 +22,10 @@ public class paymentcontroller {
     @GetMapping("/{id}")
     public Payment getPayment(@PathVariable Long id) {
         return paymentService.getPaymentDetails(id);
+    }
+
+    @GetMapping("/search")
+    public List<Payment> searchPayments(@RequestParam String status) {
+        return paymentService.getPaymentsByStatus(status);
     }
 }
